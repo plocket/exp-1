@@ -28,6 +28,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          
+      - name: Git config email
+        run: git config --global user.email "52798256+plocket@users.noreply.github.com"
+          
+      - name: Git config username
+        run: git config --global user.email "plocket"
 
       - name: Install dependencies
         run: npm install
