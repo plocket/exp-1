@@ -1,0 +1,44 @@
+name: npm_publish
+description: bump own npm minor version and publish.
+
+# https://www.promptworks.com/blog/automated-package-publishing-with-github-actions/
+# https://docs.npmjs.com/cli/v6/commands/npm-version
+# [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: major, minor, patch, or pre
+        required: false
+        default: minor
+  #push:
+  #  branches:
+  #  - main
+  #  - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm run test
+
+      - name: Bump
+        run: npm version ${{ github.event.inputs.version }} -m "Upgrade to %s"
+
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
