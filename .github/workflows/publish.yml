@@ -1,5 +1,5 @@
 name: npm_publish
-description: bump own npm minor version and publish.
+# description: bump own npm minor version and publish.
 
 # https://www.promptworks.com/blog/automated-package-publishing-with-github-actions/
 # https://docs.npmjs.com/cli/v6/commands/npm-version
@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Test
-        run: npm run test
+      #- name: Test
+      #  run: npm run test
 
       - name: Bump
         run: npm version ${{ github.event.inputs.version }} -m "Upgrade to %s"
