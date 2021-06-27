@@ -36,10 +36,11 @@ jobs:
       #  run: npm run test
 
       - name: Bump
-        run: |
-          git config user.email "52798256+plocket@users.noreply.github.com"
-          git config user.email "plocket"
-          npm version ${{ github.event.inputs.version }} -m "Upgrade to %s"
+        run: npm version ${{ github.event.inputs.version }} -m "Upgrade to %s"
+        with:
+          user.email: 52798256+plocket@users.noreply.github.com
+          user.name: plocket
+          
 
       - name: Publish
         run: npm publish --access public
