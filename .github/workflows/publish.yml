@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --local user.email "52798256+plocket@users.noreply.github.com"
           git config --local user.name "plocket"
-          npm version ${{ github.event.inputs.version }} --no-git-tag-version -m "Upgrade to %s"
+          npm version ${{ github.event.inputs.version }} --new-version --no-git-tag-version -m "Upgrade to %s"
           
       - name: Publish
         run: npm publish --access public
