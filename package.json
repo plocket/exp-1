@@ -1,13 +1,15 @@
 {
   "name": "@restlesstech/exp-1",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Try npm publishing stuff",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-it"
   },
-  "publishConfig": {"access": "public"},
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plocket/exp-1.git"
